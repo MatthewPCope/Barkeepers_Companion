@@ -16,7 +16,7 @@ const Main = () => {
         
     }, [setCocktailList])
 
-    const removeFromDom = liaizonById => {
+    const removeFromDom = cocktailById => {
         axios.delete(`http://localhost:8000/cocktails/delete/${cocktailById}`)
         .then((res) => {
             console.log(res);
@@ -35,7 +35,7 @@ const Main = () => {
             </h1>
             <Link to={'/cocktails/create'}>Create New Cocktail</Link>
             <br/>
-            <Link to={'/cocktails/riffs'}>Riff Cocktail</Link>
+            {/* <Link to={'/cocktails/riffs'}>Riff Cocktail</Link> */}
             <br/>
             <CocktailList cocktailList={cocktailList} removeFromDom={removeFromDom} initialName={cocktail.name} />
             

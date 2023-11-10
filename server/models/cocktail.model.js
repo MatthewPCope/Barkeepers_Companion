@@ -1,15 +1,15 @@
 const mongoose = require('mongoose');
 
 const validateNameLength = (name) => {
-    return name.length >= 2;
+    return String(name).length >= 2;
 };
 
 const validateIngredientsLength = (ingredients) => {
-    return ingredients.length >= 2;
+    return String(ingredients).length >= 2;
 };
 
 const validateTechniqueLength = (technique) => {
-    return technique.length <= 255;
+    return String(technique).length <= 255;
 };
 
 

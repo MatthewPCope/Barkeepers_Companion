@@ -2,7 +2,7 @@ import React, {useEffect , useState} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 import DeleteButton from './DeleteButton';
-import {useNavigate, useParams} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 
 const CocktailList = (props) => {
@@ -20,14 +20,14 @@ const CocktailList = (props) => {
             console.log(err);
         })
     }, [setCocktail])
-
+// console.log(cocktail)
   return (
     <div>
             {
                 cocktail.map((cocktail, index) => (
                     <div key={index}>
                         <h2>{cocktail.name}</h2>
-                        <p>{cocktail.ingredients} // {cocktail.technique}</p>
+                        {/* <p>{cocktail.ingredients}</p> */}
                         <Link to={`/cocktails/update/${cocktail._id}`}>Edit</Link>
                         <DeleteButton cocktailById={cocktail._id} successCallback={() => navigate('/cocktails')} />
                     </div>

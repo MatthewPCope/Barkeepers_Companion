@@ -18,7 +18,7 @@ const DisplayCocktail = (props) => {
             .catch((err) => console.log(err))
     }, [id])
 
-    const removeFromDom = liaizonById => {
+    const removeFromDom = cocktailById => {
         setDisplayCocktail(displayCocktail.filter(displayCocktail => displayCocktail._id !== cocktailById))
     }
 
