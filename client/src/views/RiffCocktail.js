@@ -1,7 +1,7 @@
 import React , {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 import axios from "axios";
-import RiffedCocktailList from '../components/riffedCocktailList';
+import RiffedCocktailList from '../components/RiffedCocktailList';
 
 const RiffCocktail = () => {
   const [riffedCocktailList, setRiffedCocktailList] = useState([]);
