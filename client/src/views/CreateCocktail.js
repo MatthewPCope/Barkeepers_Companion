@@ -28,14 +28,14 @@ const CreateCocktail = () => {
 
   return (
         <div>
-            <header>
+            {/* <header>
             Create A New Cocktail !
-            </header>
+            </header> */}
             <CocktailForm onSubmitProp={createCocktail} initialName="" initialIngredients="" initialTechnique="" errors={errors}/>
             {errors.map((err, index) => 
                     <p key={index}>{err}</p> )}
             <br/>
-            <Link to={'/cocktails'}>Back to all Cocktail</Link>
+            {/* <Link to={'/cocktails'}>Back to all Cocktail</Link> */}
         </div>
     )
 

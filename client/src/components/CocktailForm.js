@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {useNavigate} from 'react-router-dom'
+import {useNavigate, Link} from 'react-router-dom'
 
 const CocktailForm = (props) => {
     const {initialName, initialIngredients, initialTechnique, onSubmitProp} = props;
@@ -24,9 +24,8 @@ const CocktailForm = (props) => {
     };
 
     return (
-        <div>
-            
         <> 
+<<<<<<< HEAD
         
             <form onSubmit={createCocktail}successcallback={() => navigate('/cocktails')} >
 
@@ -38,40 +37,67 @@ const CocktailForm = (props) => {
                         name="name"
                         type="text"
                     />
+=======
+            <div className=''>
+                <h1 className=' font3 text-center mb-3 mt-5'>Create a Cocktail</h1>
+                            {/* successcallback={() => navigate('/cocktails')}  */}
+                <div id="container2">
+                    <div  className= ' font1 box p-4 my-3'>
+                        <form onSubmit={createCocktail} >
+                            <div className="form-group mb-4">
+                                <label className='form-label'>Cocktail Name:</label>
+                                <input className='form-control'
+                                    onChange={(e) => setName(e.target.value)}
+                                    value={name}
+                                    name="name"
+                                    type="text"
+                                />
+                            </div>
+                            
+                            <div className="form-group mb-4">
+                                <label className='form-label'>Ingredients</label>
+                                <textarea className='form-control'
+                                    onChange={(e) => setIngredients(e.target.value)}
+                                    value={ingredients}
+                                    name="ingredients"
+                                    type="text"
+                                    rows="4" cols="50"
+                                />
+                            </div>
+                            
+                            <div className="form-group mb-4">
+                                <label className='form-label'>Technique</label>
+                                <textarea className='form-control'
+                                    onChange={(e) => setTechnique(e.target.value)}
+                                    value={technique}
+                                    name="technique"
+                                    type="text"
+                                    rows="4" cols="50"
+                                />
+                            </div>
+                            <div className='text-center'>
+                            <input className="submit-input" type="submit" value="Submit" />
+                            </div>
+                            
+                        </form>
+                        <div className='text-center mt-3'>
+                <Link to={'/cocktails'}>
+                    <button className='font1 button' >Home</button>
+                </Link>
+            </div>
+                    </div>
+>>>>>>> 0e15459 (started styling)
                 </div>
-  
-                <br />
-  
-                <div className="form-fields">
-                    <label>Ingredients</label>
-                    <input
-                        onChange={(e) => setIngredients(e.target.value)}
-                        value={ingredients}
-                        name="ingredients"
-                        type="text"
-                    />
-                </div>
-
-                <br />
-  
-                <div className="form-fields">
-                    <label>Technique</label>
-                    <input
-                        onChange={(e) => setTechnique(e.target.value)}
-                        value={technique}
-                        name="technique"
-                        type="textarea"
-                    />
-                </div>
-
-  
-                <br />
-                <input className="submit-input" type="submit" value="Submit" />
-            </form>
-            </> 
-        </div>
+            </div>
+        </> 
     );
 };
 
 export default CocktailForm;
 
+
+
+
+
+
+            

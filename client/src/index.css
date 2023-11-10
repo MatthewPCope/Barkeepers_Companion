@@ -1,13 +1,60 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+ */
+
+#container2{
+    margin:0px auto;
+    
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    margin-top: 30px;
+}
+.box {
+    width: 540px;
+    margin: 0px auto;
+    /* background-color: #F3AA60; */
+    border: 4px solid #25211a;
+    margin:20px;
+    color: black;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.background-image{
+    background-image: url(./images/pexels-david-guerrero-2945691.jpg);
+    
+    background-size: cover;
 }
+
+.font1{
+    font-family: "Hardsign";
+    font-size: 24pt;
+    color:burlywood
+}
+.font2{
+    font-family: "Hardsign";
+    font-size: 72pt;
+    color:burlywood
+}
+.font3{
+    font-family: "Hardsign";
+    font-size: 68pt;
+    color:burlywood
+}
+
+@font-face {
+    font-family: "Hardsign";
+    
+    src: local("Hardsign"),
+    url("./fonts/hardsign-font/HardsignLayered-eZ1MB.ttf") format("truetype");
+}
+.button{
+    background-color: #332f2b;
+    color: white;
+    transition-duration: 0.4s;
+    border-radius: 8px;
+    margin:20px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)
+    }

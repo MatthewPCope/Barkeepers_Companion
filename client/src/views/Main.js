@@ -30,10 +30,17 @@ const Main = () => {
 
     return (
         <div>
-            <h1>
-              WELCOME TO BARKEEPER'S COMPANION
+            <h1 className=' font2 mt-5 text-center'>
+                BARKEEPER'S COMPANION
             </h1>
-            <Link to={'/cocktails/create'}>Create New Cocktail</Link>
+            
+            <div className='text-center mt-3'>
+                <Link to={'/cocktails/create'}>
+                    <button className='font1 button' >Create a Cocktail</button>
+                </Link>
+            </div>
+        
+            
             <br/>
             {/* <Link to={'/cocktails/riffs'}>Riff Cocktail</Link> */}
             <br/>
