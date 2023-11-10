@@ -27,8 +27,8 @@ const CocktailForm = (props) => {
         <div>
             
         <> 
-        {/* successcallback={() => navigate('/cocktails')}  */}
-            <form onSubmit={createCocktail} >
+        
+            <form onSubmit={createCocktail}successcallback={() => navigate('/cocktails')} >
 
                 <div className="form-fields">
                     <label>Cocktail Name</label>

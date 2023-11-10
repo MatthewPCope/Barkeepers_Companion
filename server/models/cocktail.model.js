@@ -15,17 +15,17 @@ const validateTechniqueLength = (technique) => {
 
 
 const CocktailSchema = new mongoose.Schema({
-    Name: {
+    name: {
         type: String,
         required: [true, 'Name is required'],
         validate: [validateNameLength, 'Name must contain at least 2 characters'],
     },
-    Ingredients: {
+    ingredients: {
         type: String,
         required: [true, 'Ingredients are required'],
         validate: [validateIngredientsLength, 'Ingredients must contain at least 2 characters'],
     },
-    Technique: {
+    technique: {
         type: String,
         required: [true, 'Technique is required'],
         validate: [validateTechniqueLength, 'Technique must be no more than 255 characters']
