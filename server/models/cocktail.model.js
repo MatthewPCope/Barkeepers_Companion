@@ -14,7 +14,7 @@ const validateTechniqueLength = (technique) => {
 
 
 
-const LiaizonSchema = new mongoose.Schema({
+const CocktailSchema = new mongoose.Schema({
     Name: {
         type: String,
         required: [true, 'Name is required'],

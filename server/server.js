@@ -1,13 +1,16 @@
 const express = require("express");
+const cors = require("cors");
 const app = express();
-const cors = require('cors')
-const cookieParser = require('cookie-parser')
 
-require('dotenv').config();
-require('./config/config.mongoose.jsx')
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+const port = 8000;
 
-app.use(express.json(), express.urlencoded({ extended: true }))
-app.use(cors({credentials: true, origin:'http://localhost:5173'}))
-app.use(cookieParser())
+require('./config/mongoose.config');
+require('./routes/cocktail.routes')(app);
+require('./models/cocktail.model');
 
-app.listen(8000, () => console.log("Crackalackin' at port 8000"))
+
+
+app.listen(port, () => console.log(`Listening on port: 8000`));
