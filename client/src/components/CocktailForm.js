@@ -25,25 +25,13 @@ const CocktailForm = (props) => {
 
     return (
         <> 
-<<<<<<< HEAD
         
-            <form onSubmit={createCocktail}successcallback={() => navigate('/cocktails')} >
-
-                <div className="form-fields">
-                    <label>Cocktail Name</label>
-                    <input
-                        onChange={(e) => setName(e.target.value)}
-                        value={name}
-                        name="name"
-                        type="text"
-                    />
-=======
+            {/* <form onSubmit={createCocktail}successcallback={() => navigate('/cocktails')} > */}
             <div className=''>
                 <h1 className=' font3 text-center mb-3 mt-5'>Create a Cocktail</h1>
-                            {/* successcallback={() => navigate('/cocktails')}  */}
                 <div id="container2">
                     <div  className= ' font1 box p-4 my-3'>
-                        <form onSubmit={createCocktail} >
+                        <form onSubmit={createCocktail} successcallback={() => navigate('/cocktails')} >
                             <div className="form-group mb-4">
                                 <label className='form-label'>Cocktail Name:</label>
                                 <input className='form-control'
@@ -80,24 +68,13 @@ const CocktailForm = (props) => {
                             </div>
                             
                         </form>
-                        <div className='text-center mt-3'>
-                <Link to={'/cocktails'}>
-                    <button className='font1 button' >Home</button>
-                </Link>
-            </div>
+                        {/* <div className='text-center mt-3'> */}              
                     </div>
->>>>>>> 0e15459 (started styling)
                 </div>
             </div>
-        </> 
+    </>
+           
     );
-};
+}
 
 export default CocktailForm;
-
-
-
-
-
-
-            

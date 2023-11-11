@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
-import {Link} from 'react-router-dom';
+import {useNavigate, Link} from 'react-router-dom'
 import axios from "axios";
 import CocktailForm from '../components/CocktailForm';
 
 const CreateCocktail = () => {
     const [cocktailList, setCocktailList] = useState ([]);
     const [errors, setErrors] = useState([]);
+    const navigate = useNavigate();
 
     const createCocktail = ( cocktailParam ) => {
        
@@ -31,11 +32,11 @@ const CreateCocktail = () => {
             {/* <header>
             Create A New Cocktail !
             </header> */}
-            <CocktailForm onSubmitProp={createCocktail} initialName="" initialIngredients="" initialTechnique="" errors={errors}/>
+            <CocktailForm onSubmitProp={createCocktail} successcallback={() => navigate('/cocktails')} initialName="" initialIngredients="" initialTechnique="" errors={errors}/>
             {errors.map((err, index) => 
                     <p key={index}>{err}</p> )}
             <br/>
-            {/* <Link to={'/cocktails'}>Back to all Cocktail</Link> */}
+            <Link to={'/cocktails'}>Back to all Cocktails</Link>
         </div>
     )
 
