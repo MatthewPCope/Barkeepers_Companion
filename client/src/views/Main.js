@@ -33,19 +33,23 @@ const Main = () => {
             <h1 className=' font2 mt-5 text-center'>
                 BARKEEPER'S COMPANION
             </h1>
-            
+
             <div className='text-center mt-3'>
                 <Link to={'/cocktails/create'}>
                     <button className='font1 button' >Create a Cocktail</button>
                 </Link>
             </div>
+
+            <div className='text-center mt-3'>
+                <Link to={'/cocktails/riffed'}>
+                    <button className='font1 button' >Riffed Cocktail List</button>
+                </Link>
+            </div>
         
             
             <br/>
-            {/* <Link to={'/cocktails/riffs'}>Riff Cocktail</Link> */}
             <br/>
             <CocktailList cocktailList={cocktailList} removeFromDom={removeFromDom} initialName={cocktail.name} />
-            
             
         </div>
     )

@@ -2,13 +2,11 @@ import React , {useEffect, useState} from 'react';
 import {Link, useNavigate, useParams} from 'react-router-dom';
 import axios from "axios";
 import CocktailForm from '../components/CocktailForm';
-// import RiffedCocktailList from '../components/RiffedCocktailList';
-
+import DeleteButton from '../components/DeleteButton';
 const RiffCocktail = () => {
 
     const {id} = useParams();
     const [cocktail, setCocktail] = useState();
-    const [cocktailList, setCocktailList] = useState ([]);
     const [riffedCocktailList, setRiffedCocktailList] = useState ([]);
     const [errors, setErrors] = useState([]);
     const [loaded, setLoaded] = useState(false);
@@ -30,8 +28,8 @@ const RiffCocktail = () => {
                 .then(res => {
                     console.log(res);
                     console.log(res.data)
-                    setCocktailList([...cocktailList, res.data])
-                    navigate('/cocktails');
+                    setRiffedCocktailList([...riffedCocktailList, res.data])
+                    navigate('/cocktails/riffed');
                 })
                 .catch((err) => {
                     const errorResponse = err.response.data.errors;
@@ -43,15 +41,15 @@ const RiffCocktail = () => {
                 }, [setErrors])
         }
 
-    const removeFromDom = cocktailById => {
-        axios.delete(`http://localhost:8000/cocktails/delete/${cocktailById}`)
-        .then((res) => {
-            console.log(res);
-            console.log(res.data);
-            setRiffedCocktailList(riffedCocktailList.filter(cocktail => cocktail._id !== cocktailById))
-    })
-        .catch((err) => console.log(err))
-}  
+//     const removeFromDom = cocktailById => {
+//         axios.delete(`http://localhost:8000/cocktails/delete/${cocktailById}`)
+//         .then((res) => {
+//             console.log(res);
+//             console.log(res.data);
+//             setRiffedCocktailList(riffedCocktailList.filter(cocktail => cocktail._id !== cocktailById))
+//     })
+//         .catch((err) => console.log(err))
+// }  
 
     return (
         <div>
@@ -67,7 +65,7 @@ const RiffCocktail = () => {
             <Link to={'/cocktails/create'}>Create New Cocktail</Link>
             <br/>
             <Link to={'/cocktails'}>Back to All COCKTAILS</Link>
-            {/* <RiffedCocktailList riffedCocktailList={riffedCocktailList} removeFromDom={removeFromDom} /> */}
+            <DeleteButton cocktailById={cocktail._id} successCallback={() => navigate('/cocktails')} />
             </>
         )}
         </div>

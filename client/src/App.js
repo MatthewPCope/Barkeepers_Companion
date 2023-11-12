@@ -5,6 +5,7 @@ import DisplayCocktail from './views/DisplayCocktail';
 import UpdateCocktail from './views/UpdateCocktail';
 import CreateCocktail from './views/CreateCocktail';
 import RiffCocktail from './views/RiffCocktail';
+import RiffedCocktailList from './components/RiffedCocktailList';
 const App = () => {
   return (
     <div className="App">
@@ -15,6 +16,7 @@ const App = () => {
           <Route element={<UpdateCocktail/>} path="/cocktails/update/:id" />
           <Route element={<CreateCocktail/>} path="/cocktails/create" />
           <Route element={<RiffCocktail/>} path="/cocktails/riff/:id" />
+          <Route element={<RiffedCocktailList/>} path="/cocktails/riffed" />
         </Routes>
      </BrowserRouter>
     </div>
