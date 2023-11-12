@@ -24,13 +24,12 @@ const CocktailList = (props) => {
   return (
     <div>
             {
-                cocktail.map((cocktail, index) => (
+                cocktail.map((currentCocktail, index) => (
                     <div key={index}>
-                        <h2 className="nameColor">{cocktail.name}</h2>
-                        {/* <p>{cocktail.ingredients}</p> */}
-                        <Link to={`/cocktails/${cocktail._id}`}>Display Cocktail</Link>
-                        <Link to={`/cocktails/update/${cocktail._id}`}>Edit</Link>
-                        <DeleteButton cocktailById={cocktail._id} successCallback={() => navigate('/cocktails')} />
+                        <h2 className="nameColor">{currentCocktail.name}</h2>
+                        <Link to={`/cocktails/${currentCocktail._id}`}>Display Cocktail</Link>
+                        <Link to={`/cocktails/update/${currentCocktail._id}`}>Edit</Link>
+                        <DeleteButton cocktailById={currentCocktail._id} successCallback={() => navigate('/cocktails')} />
                     </div>
                 ))
             }
