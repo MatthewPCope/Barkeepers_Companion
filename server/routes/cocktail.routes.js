@@ -6,5 +6,5 @@ module.exports = (app) => {
     app.get('/cocktails/:id', CocktailController.getCocktailById)
     app.put('/cocktails/:id', CocktailController.updateCocktail)
     app.delete('/cocktails/:id', CocktailController.deleteCocktail)
-    // app.get('/cocktails/riff/:id', CocktailController.riffCocktail)
+    app.get('/cocktails/riff/:id', CocktailController.riffCocktail)
 }

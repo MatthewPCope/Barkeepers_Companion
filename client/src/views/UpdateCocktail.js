@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import {Link} from 'react-router-dom';
-import {useNavigate, useParams} from 'react-router-dom';
+import {Link, useNavigate, useParams} from 'react-router-dom';
 import CocktailForm from '../components/CocktailForm';
 import DeleteButton from '../components/DeleteButton';
 
@@ -31,7 +30,7 @@ const UpdateCocktail = (props) => {
 
   return (
     <div>
-        <h1>Update Cocktail</h1>
+        <h1 className='font3 text-center mb-3 mt-5'>Update Cocktail</h1>
         {loaded && (
             <>
             <CocktailForm onSubmitProp={updateCocktail} 

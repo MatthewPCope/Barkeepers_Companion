@@ -1,21 +1,47 @@
 import React , {useEffect, useState} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate, useParams} from 'react-router-dom';
 import axios from "axios";
-import RiffedCocktailList from '../components/RiffedCocktailList';
+import CocktailForm from '../components/CocktailForm';
+// import RiffedCocktailList from '../components/RiffedCocktailList';
 
 const RiffCocktail = () => {
-  const [riffedCocktailList, setRiffedCocktailList] = useState([]);
-  
-  useEffect(() => {
-    axios.get("http://localhost:8000/cocktails")
-    .then((res) => {
-        console.log(res.data);
-        setRiffedCocktailList(res.data);
-    })
-    .catch((err) => {
-        console.log(err);
-    })
-}, [setRiffedCocktailList])
+
+    const {id} = useParams();
+    const [cocktail, setCocktail] = useState();
+    const [cocktailList, setCocktailList] = useState ([]);
+    const [riffedCocktailList, setRiffedCocktailList] = useState ([]);
+    const [errors, setErrors] = useState([]);
+    const [loaded, setLoaded] = useState(false);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        axios.get(`http://localhost:8000/cocktails/${id}`)
+            .then(res => {
+                console.log(res);
+                console.log(res.data);
+                setCocktail(res.data);
+                setLoaded(true);
+            })
+        }, [id])
+
+        const createCocktail = ( cocktailParam ) => {
+       
+            axios.post("http://localhost:8000/cocktails", cocktailParam)
+                .then(res => {
+                    console.log(res);
+                    console.log(res.data)
+                    setCocktailList([...cocktailList, res.data])
+                    navigate('/cocktails');
+                })
+                .catch((err) => {
+                    const errorResponse = err.response.data.errors;
+                    const errorArr = [];
+                    for (const key of Object.keys(errorResponse)) {
+                        errorArr.push(errorResponse[key].message)
+                    }
+                    setErrors(errorArr);
+                }, [setErrors])
+        }
 
     const removeFromDom = cocktailById => {
         axios.delete(`http://localhost:8000/cocktails/delete/${cocktailById}`)
@@ -29,11 +55,21 @@ const RiffCocktail = () => {
 
     return (
         <div>
-            <h1>RIFF COCKTAIL</h1>
+            {loaded && (
+                <>
+            <h1 className='font3 text-center mb-3 mt-5'>RIFF COCKTAIL</h1>
+            <CocktailForm onSubmitProp={createCocktail} 
+                        initialName={cocktail.name} 
+                        initialIngredients={cocktail.ingredients} 
+                        initialTechnique={cocktail.technique} />
+            {errors.map((err, index) => 
+                    <p key={index}>{err}</p> )}
             <Link to={'/cocktails/create'}>Create New Cocktail</Link>
             <br/>
             <Link to={'/cocktails'}>Back to All COCKTAILS</Link>
-            <RiffedCocktailList riffedCocktailList={riffedCocktailList} removeFromDom={removeFromDom} />
+            {/* <RiffedCocktailList riffedCocktailList={riffedCocktailList} removeFromDom={removeFromDom} /> */}
+            </>
+        )}
         </div>
   );
 }

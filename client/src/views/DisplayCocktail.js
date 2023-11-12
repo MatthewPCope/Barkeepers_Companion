@@ -9,7 +9,7 @@ const DisplayCocktail = (props) => {
     const [displayCocktail, setDisplayCocktail] = useState({});
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/cocktail/${id}`)
+        axios.get(`http://localhost:8000/cocktails/${id}`)
             .then((res) => {
                 console.log(res);
                 console.log(res.data);
@@ -25,10 +25,11 @@ const DisplayCocktail = (props) => {
   return (
     <div>
         
-        <h1>{displayCocktail.name}</h1>
-        <p>{displayCocktail.ingredients}</p>
-        <p>{displayCocktail.technique}</p>
-        <Link to={`/cocktail/update/${displayCocktail._id}`}>Edit</Link>
+        <h1 className='nameColor'>{displayCocktail.name}</h1>
+        <p className='nameColor'>{displayCocktail.ingredients}</p>
+        <p className='nameColor'>{displayCocktail.technique}</p>
+        <Link to={`/cocktails/riff/${displayCocktail._id}`}>Riff Cocktail</Link>
+        <Link to={`/cocktails/update/${displayCocktail._id}`}>Edit</Link>
         <DeleteButton cocktailById={displayCocktail._id} successCallback={() => removeFromDom(displayCocktail._id)} />
        <div>
         <Link to={'/cocktails'}>Back To All Cocktails</Link> 

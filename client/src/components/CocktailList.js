@@ -28,6 +28,7 @@ const CocktailList = (props) => {
                     <div key={index}>
                         <h2 className="nameColor">{cocktail.name}</h2>
                         {/* <p>{cocktail.ingredients}</p> */}
+                        <Link to={`/cocktails/${cocktail._id}`}>Display Cocktail</Link>
                         <Link to={`/cocktails/update/${cocktail._id}`}>Edit</Link>
                         <DeleteButton cocktailById={cocktail._id} successCallback={() => navigate('/cocktails')} />
                     </div>

@@ -32,5 +32,9 @@ module.exports.deleteCocktail = (request, response) => {
         .catch((err) => console.log(err));
 }
 
-// module.exports.riffCocktail = (request, response)
+module.exports.riffCocktail = (request, response) => {
+    Cocktail.findOneAndUpdate({_id: request.params.id}, request.body, {new:true})
+        .then(updatedCocktail => response.json(updatedCocktail))
+        .catch(err => response.json(err))
+}
 

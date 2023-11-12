@@ -53,7 +53,7 @@ const CocktailForm = (props) => {
     return (
         <>
             <div className=''>
-                <h1 className='font3 text-center mb-3 mt-5'>Create a Cocktail</h1>
+                
                 <div id="container2">
                     <div className='font1 box p-4 my-3'>
                         <form onSubmit={createCocktail}>

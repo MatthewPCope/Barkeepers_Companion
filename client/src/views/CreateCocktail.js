@@ -30,9 +30,7 @@ const CreateCocktail = () => {
 
   return (
         <div>
-            {/* <header>
-            Create A New Cocktail !
-            </header> */}
+            <h1 className='font3 text-center mb-3 mt-5'>Create a Cocktail</h1>
             <CocktailForm onSubmitProp={createCocktail} successcallback={() => navigate('/cocktails')} initialName="" initialIngredients="" initialTechnique="" errors={errors}/>
             {errors.map((err, index) => 
                     <p key={index}>{err}</p> )}
