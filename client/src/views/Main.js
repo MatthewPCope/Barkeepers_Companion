@@ -1,5 +1,5 @@
 import React , {useEffect, useState, useContext} from 'react';
-import {Link, useNavigate} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import axios from "axios";
 import CocktailList from '../components/CocktailList';
 import {userContext} from '../context/UserContext'
@@ -8,7 +8,7 @@ const Main = () => {
     const [cocktailList, setCocktailList] = useState ([]);
     const {currentUser} = useContext(userContext)
     const cocktail = useState([]);
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
     useEffect(() => {
         axios.get("http://localhost:8000/cocktails")
         .then((res) => {
@@ -28,15 +28,7 @@ const Main = () => {
     })
         .catch((err) => console.log(err))
 }  
-const logoutUser = () => {
-    axios.post('http://localhost:8000/api/logoutUser', {}, {withCredentials:true})
-        .then((res) => {
-            navigate('/')
-        })
-        .catch((err) => {
-            console.log(err)
-        })
-}
+
 
 
     return (
@@ -54,13 +46,11 @@ const logoutUser = () => {
                 </div>
 
                 <div className='text-center mt-3'>
-                    <Link to={'/cocktails/riffed'}>
+                    <Link to={'/cocktails/rifflist'}>
                         <button className='font1 button' >Riffed Cocktail List</button>
                     </Link>
                 </div>
-                <div className='text-center'>
-                    <button className="font1 button" onClick={logoutUser}>Logout</button>
-                </div>
+                
                 
                 <br/>
                 <br/>

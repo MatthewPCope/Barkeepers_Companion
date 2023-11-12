@@ -5,21 +5,21 @@ import {Link} from 'react-router-dom';
 import {useNavigate} from 'react-router-dom';
 
 
-const CocktailList = (props) => {
+const DisplayRiffedCocktails = (props) => {
 
-    const [cocktail, setCocktail] = useState([]);
+    const [riffedCocktail, setRiffedCocktail] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get("http://localhost:8000/cocktails")
+        axios.get("http://localhost:8000/cocktails/riffed")
         .then((res) => {
             console.log(res.data);
-            setCocktail(res.data);
+            setRiffedCocktail(res.data);
         })
         .catch((err) => {
             console.log(err);
         })
-    }, [setCocktail])
+    }, [setRiffedCocktail])
 // console.log(cocktail)
 const logoutUser = () => {
     axios.post('http://localhost:8000/api/logoutUser', {}, {withCredentials:true})
@@ -33,8 +33,8 @@ const logoutUser = () => {
 const deleteCocktail = (idFromBelow) => {
     axios.delete(`http://localhost:8000/cocktails/${idFromBelow}`)
         .then((res) => {
-            const newList = cocktail.filter((currentCocktail, index) => currentCocktail._id != idFromBelow)
-            setCocktail(newList);
+            const newList = riffedCocktail.filter((currentCocktail, index) => currentCocktail._id != idFromBelow)
+            setRiffedCocktail(newList);
             
         })
         .catch((err) => {
@@ -44,7 +44,7 @@ const deleteCocktail = (idFromBelow) => {
     
 return (
     <>
-        <h1 className='font1 text-center mb-3 '>Cocktails</h1>
+        <h1 className='font1 text-center mb-3 '>Riffed Cocktails</h1>
             
             <div id="container2" className='font1'>
                 <table className=" table2 w-75 border-dark border-4 text-center table-bordered">
@@ -56,23 +56,23 @@ return (
                     </thead>
                     <tbody>
                     {
-                    cocktail.map((currentCocktail, index)=>{
+                    riffedCocktail.map((riffCocktail, index)=>{
                         // if(currentCocktail.userId == currentUser._id)
                         return(
-                            <tr key={currentCocktail._id}>
+                            <tr key={riffCocktail._id}>
                                 <td>
-                                    <Link to={`/cocktails/${currentCocktail._id}`}>
-                                        <button  className=" button">{currentCocktail.name} </button>
+                                    <Link to={`/cocktails/${riffCocktail._id}`}>
+                                        <button  className=" font1 button">{riffCocktail.name} </button>
                                     </Link>
                                 </td>
                                 
                                 <td>
-                                    <Link to={`/cocktails/update/${currentCocktail._id}`}>
-                                        <button className=" button">Edit </button>
+                                    <Link to={`/cocktails/update/${riffCocktail._id}`}>
+                                        <button className="font1  button">Edit </button>
                                     </Link>
                                 </td>
                                 <td>
-                                <button className='button' onClick={() => deleteCocktail(currentCocktail._id)}>Delete</button>
+                                <button className=' font1 button' onClick={() => deleteCocktail(riffCocktail._id)}>Delete</button>
                                 </td>
                             </tr>
                     )})}
@@ -86,4 +86,4 @@ return (
 )
 }
 
-export default CocktailList;
+export default DisplayRiffedCocktails;

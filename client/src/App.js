@@ -9,6 +9,7 @@ import RiffedCocktailList from './components/RiffedCocktailList';
 import RegisterForm from './components/RegisterForm'
 import LoginForm from './components/LoginForm'
 import Index from './views/Index'
+import DisplayRiffedCocktails from './views/DisplayRiffedCocktails';
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
           <Route element={<RiffedCocktailList/>} path="/cocktails/riffed" />
           <Route element={<RegisterForm/>} path="/register" />
           <Route element={<LoginForm  />} path="/login" />
+          <Route element={<DisplayRiffedCocktails/>} path="/cocktails/rifflist" />
         </Routes>
 
     </div>

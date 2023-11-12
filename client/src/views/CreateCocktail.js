@@ -12,7 +12,7 @@ const CreateCocktail = () => {
     const navigate = useNavigate();
 
     const createCocktail = ( cocktailParam ) => {
-       
+
         axios.post("http://localhost:8000/cocktails", cocktailParam)
             .then(res => {
                 console.log(res);
@@ -32,7 +32,7 @@ const CreateCocktail = () => {
     }
 
 
-  return (
+    return (
         <div>
             <h1 className='font3 text-center mb-3 mt-5'>Create a Cocktail</h1>
             <CocktailForm onSubmitProp={createCocktail} successcallback={() => navigate('/cocktails')} initialName="" initialIngredients="" initialTechnique="" errors={errors}/>

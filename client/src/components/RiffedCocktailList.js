@@ -1,7 +1,7 @@
 import React, {useEffect , useState} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
-import DeleteButton from './DeleteButton';
+// import DeleteButton from './DeleteButton';
 import {useNavigate} from 'react-router-dom';
 
 
@@ -21,32 +21,54 @@ const RiffedCocktailList = (props) => {
         })
     }, [setRiffedCocktail])
 // console.log(cocktail)
+const deleteCocktail = (idFromBelow) => {
+    axios.delete(`http://localhost:8000/cocktails/${idFromBelow}`)
+        .then((res) => {
+            navigate("/cocktails")
+            
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+}
   return (
     <div>
-        <h1 className=' font2 mt-5 text-center'>RIFFED COCKTAIL LIST</h1>  
-        <br/>
-        <div className='text-center mt-3'>
-                <Link to={'/cocktails'}>
-                    <button className='font1 button' >Back to All Cocktails</button>
-                </Link>
-            </div>
-                                   
-            {
-                riffedCocktail.map((riffedCocktail, index) => (
-                    <div key={index}>
-                             
-                        <h2 className="nameColor">{riffedCocktail.name}</h2>
-                        {/* <p>{cocktail.ingredients}</p> */}
-                        <Link to={`/cocktails/${riffedCocktail._id}`}>Display Cocktail</Link>
-                        <br/>
-                        <Link to={`/cocktails/update/${riffedCocktail._id}`}>Edit</Link>
-                        <br/>
-                        <DeleteButton cocktailById={riffedCocktail._id} successCallback={() => navigate('/cocktails')} />
+            <div className='text-center mb-3 mt-5'>
+                    <div id='container'>
+                        <h1 className='font2 text-center '>{riffedCocktail.name}</h1>
+                        <h4  className=' mb-5 mt-4 font1'>Ingredients: {riffedCocktail.ingredients}</h4>
+                        <h4 className='font1 mt-5 mb-5'>Technique: {riffedCocktail.technique}</h4>
                     </div>
-                ))
-            }
+                        <div className='  mt-5'>
+                                
+                                <div className='d-flex align-items-center justify-content-md-center mb-2 mt-4'>
+                                    
+                                    <div>
+                                        <Link to={`/cocktails/update/${riffedCocktail._id}`}>
+                                            <button className=" font1 button">Edit </button>
+                                        </Link>
+                                    </div>
+                                    <div>
+                                    <button className=' font1 button' onClick={() => deleteCocktail(riffedCocktail._id)}>Delete</button>
+                                    </div>
+                                </div>
+                                <div>
+                                    <Link to={'/cocktails'}>
+                                        <button className=' font1 button' >Back to Cocktails</button>
+                                    </Link>
+                                </div>
+                            
+                        </div>
+            </div>
+            <div className='text-center '>
+                    <Link to={'/cocktails'}>
+                        <button className='font1 button' >Home</button>
+                    </Link>
+                </div>
         </div>
+
   )
+  
 }
 
 export default RiffedCocktailList;
