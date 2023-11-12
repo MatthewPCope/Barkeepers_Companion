@@ -24,6 +24,7 @@ const UpdateCocktail = (props) => {
         const updateCocktail = cocktail => {
             axios.put(`http://localhost:8000/cocktails/${id}`, cocktail) 
                 .then(res => {console.log(res)
+                navigate('/cocktails');
         })
         .catch(err => console.log(err))
     }

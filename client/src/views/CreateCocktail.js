@@ -15,6 +15,7 @@ const CreateCocktail = () => {
                 console.log(res);
                 console.log(res.data)
                 setCocktailList([...cocktailList, res.data])
+                navigate('/cocktails');
             })
             .catch((err) => {
                 const errorResponse = err.response.data.errors;
