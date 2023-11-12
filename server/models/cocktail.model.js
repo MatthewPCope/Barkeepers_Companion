@@ -34,6 +34,7 @@ const CocktailSchema = new mongoose.Schema({
         type: Boolean,
         default: false, // Set default to false for regular cocktails
     },
+    userId:{type: String}
 }, { timestamps: true });
 
 const Cocktail = mongoose.model('Cocktail', CocktailSchema);

@@ -3,9 +3,12 @@ import {useNavigate, Link} from 'react-router-dom'
 import axios from "axios";
 import CocktailForm from '../components/CocktailForm';
 
+
 const CreateCocktail = () => {
     const [cocktailList, setCocktailList] = useState ([]);
+    
     const [errors, setErrors] = useState([]);
+    
     const navigate = useNavigate();
 
     const createCocktail = ( cocktailParam ) => {
@@ -14,6 +17,7 @@ const CreateCocktail = () => {
             .then(res => {
                 console.log(res);
                 console.log(res.data)
+                
                 setCocktailList([...cocktailList, res.data])
                 navigate('/cocktails');
             })
