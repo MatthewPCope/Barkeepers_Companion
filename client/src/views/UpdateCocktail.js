@@ -39,7 +39,7 @@ const UpdateCocktail = (props) => {
                         initialTechnique={cocktail.technique} />
             <DeleteButton cocktailById={cocktail._id} successCallback={() => navigate('/cocktails')} />
             <br/>
-            <Link to={'/cocktailss'}>Back to all Cocktails</Link>
+            <Link to={'/cocktails'}>Back to all Cocktails</Link>
             </>
         )}
     </div>

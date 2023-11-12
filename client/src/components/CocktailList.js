@@ -26,7 +26,7 @@ const CocktailList = (props) => {
             {
                 cocktail.map((cocktail, index) => (
                     <div key={index}>
-                        <h2>{cocktail.name}</h2>
+                        <h2 className="nameColor">{cocktail.name}</h2>
                         {/* <p>{cocktail.ingredients}</p> */}
                         <Link to={`/cocktails/update/${cocktail._id}`}>Edit</Link>
                         <DeleteButton cocktailById={cocktail._id} successCallback={() => navigate('/cocktails')} />
