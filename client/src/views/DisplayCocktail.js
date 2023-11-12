@@ -26,14 +26,15 @@ const DisplayCocktail = (props) => {
     <div>
         
         <h1 className='nameColor'>{displayCocktail.name}</h1>
-        <p className='nameColor'>{displayCocktail.ingredients}</p>
-        <p className='nameColor'>{displayCocktail.technique}</p>
-        <Link to={`/cocktails/riff/${displayCocktail._id}`}>Riff Cocktail</Link>
-        <Link to={`/cocktails/update/${displayCocktail._id}`}>Edit</Link>
+        <p className='nameColor'>Ingredients: {displayCocktail.ingredients}</p>
+        <p className='nameColor'>Technique: {displayCocktail.technique}</p>
+        <Link className='linkColor' to={`/cocktails/riff/${displayCocktail._id}`}>Riff Cocktail</Link>
+        <br/>
+        <Link className='linkColor' to={`/cocktails/update/${displayCocktail._id}`}>Edit</Link>
+        <br/>
+        <Link className='linkColor' to={'/cocktails'}>Back To All Cocktails</Link> 
+        <br/>
         <DeleteButton cocktailById={displayCocktail._id} successCallback={() => removeFromDom(displayCocktail._id)} />
-       <div>
-        <Link to={'/cocktails'}>Back To All Cocktails</Link> 
-        </div> 
     </div>
 
   )
