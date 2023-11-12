@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const CocktailForm = (props) => {
-    const { initialName, initialIngredients, initialTechnique, onSubmitProp } = props;
+    const { initialName, initialIngredients, initialTechnique, initialIsRiffed, onSubmitProp } = props;
     const [name, setName] = useState(initialName);
     const [ingredients, setIngredients] = useState(initialIngredients);
     const [technique, setTechnique] = useState(initialTechnique);
+    const [isRiffed, setIsRiffed] = useState(initialIsRiffed);
     const [errors, setErrors] = useState({});
     const navigate = useNavigate();
 
@@ -39,7 +40,7 @@ const CocktailForm = (props) => {
         }
 
         try {
-            const submissionResult = await onSubmitProp({ name, ingredients, technique });
+            const submissionResult = await onSubmitProp({ name, ingredients, technique, isRiffed });
             if (submissionResult) {
                 navigate('/cocktails');
             } else {
@@ -93,6 +94,14 @@ const CocktailForm = (props) => {
                                     rows="4" cols="50"
                                 />
                                 {errors.technique && <div className="error">{errors.technique}</div>}
+                            </div>
+                            <div className="form-group mb-4">
+                                <label className='form-label'>Is Riffed:</label>
+                                <input
+                                    type="checkbox"
+                                    checked={isRiffed}
+                                    onChange={() => setIsRiffed(!isRiffed)}
+                                />
                             </div>
                             <div className='text-center'>
                                 <input className="submit-input" type="submit" value="Submit" />

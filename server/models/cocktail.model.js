@@ -30,6 +30,10 @@ const CocktailSchema = new mongoose.Schema({
         required: [true, 'Technique is required'],
         validate: [validateTechniqueLength, 'Technique must be no more than 255 characters']
     },
+    isRiffed: {
+        type: Boolean,
+        default: false, // Set default to false for regular cocktails
+    },
 }, { timestamps: true });
 
 const Cocktail = mongoose.model('Cocktail', CocktailSchema);

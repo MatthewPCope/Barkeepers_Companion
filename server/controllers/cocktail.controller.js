@@ -7,10 +7,17 @@ module.exports.createCocktail = (request, response) => {
 };
 
 module.exports.getAllCocktails = (request, response) => {
-    Cocktail.find({})
+    const { riffed } = request.query;
+    
+    let filter = {};
+    if (riffed) {
+        filter = { isRiffed: true };
+    }
+
+    Cocktail.find(filter)
         .then((allCocktails) => response.json(allCocktails))
-        .catch((err) => console.log(err))
-}
+        .catch((err) => response.status(500).json(err));
+};
 
 module.exports.getCocktailById = (request, response) => {
     Cocktail.findOne({_id: request.params.id})
@@ -38,3 +45,8 @@ module.exports.riffCocktail = (request, response) => {
         .catch(err => response.json(err))
 }
 
+module.exports.getRiffedCocktails = (request, response) => {
+    Cocktail.find({ isRiffed: true })
+        .then((riffedCocktails) => response.json(riffedCocktails))
+        .catch((err) => response.status(500).json(err));
+};
